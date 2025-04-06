@@ -1,5 +1,10 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+        """
+        Optimized: Hashset looking for the start of the sequence and the next consecutive numbers
+        Time: O(n)
+        Space: O(n)
+        """
         max_length = 0
         unique_nums = set(nums)
         for num in unique_nums:
