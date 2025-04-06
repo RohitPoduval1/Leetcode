@@ -4,7 +4,7 @@ class Solution:
         Optimal: Use output array to store prefix products, then multiply suffix products
         in the output array itself
         Time: O(n)
-        Space: O(1) since outpt array does not count
+        Space: O(1) since output array does not count
         """
 
         prefix_prod = 1  # cumulative prefix product
