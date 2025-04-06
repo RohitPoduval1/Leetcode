@@ -4,15 +4,13 @@ from collections import defaultdict
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         """
-        If s and t are anagrams, then the same number of each character will be in each string.
-        We can run an initial check for length (which is a constant time operation) since if
-        s and t have different length, we know they are not anagrams. Otherwise, use a hashmap
-        and keep track of each character's occurences. If we run through s and t and each 
-        character has an occurence of 0 by the end, we have an anagram. If it is not 0, then
-        somewhere, t had a character that s did not, meaning they are not anagrams.
-            Time: O(n)
-            Space: O(n)
+        Optimal: Hashmap to track occurences of each character.
+        (If s and t are anagrams, then the same number of each character will be in each string)
+        Time: O(n)
+        Space: O(n)
         """
+
+        # O(1) check. Not the same length means there are not anagrams
         if len(s) != len(t):
             return False
 
@@ -26,7 +24,7 @@ class Solution:
             char_occur[char] -= 1
         
         for char in char_occur:
-            if char_occur[char] != 0:
-                return False
+            if char_occur[char] != 0:  # a character occured more times in either s or t
+                return False           # meaning s and t are not anagrams
         
         return True
