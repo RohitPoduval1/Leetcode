@@ -1,9 +1,20 @@
+from collections import defaultdict
+
+
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        num_occur = defaultdict(int)
+        """
+        Suboptimal: Track occurences of each num and sort by occurences
+        Time: O(n logn)
+        Space: O(n)
+        """
+        # Populate occurences hashmap
+        num_occurences = defaultdict(int)
         for num in nums:
-            num_occur[num] += 1
+            num_occurences[num] += 1
         
-        sorted_dict = dict(sorted(num_occur.items(), key=lambda x:x[1], reverse=True))
-        return list(sorted_dict.keys())[:k]
+        # Sort dict by values (occurences)
+        sorted_occurences = dict(sorted(num_occurences.items(), key=lambda item: item[1], reverse=True))
         
+        # Return top k frequent elements
+        return list(sorted_occurences.keys())[:k]
