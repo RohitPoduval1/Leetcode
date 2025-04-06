@@ -17,9 +17,9 @@ class Solution:
         # Populates each nonexistent entry with a default value (in this case 0) because int
         # was provided. Very useful because we don't have to check if the key exists.
         char_occur = defaultdict(int)
+        
         for char in s:
             char_occur[char] += 1
-        
         for char in t:
             char_occur[char] -= 1
         
