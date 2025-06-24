@@ -10,7 +10,7 @@ class Solution:
         Space: O(n)
         """
 
-        # O(1) check. Not the same length means there are not anagrams
+        # O(1) check. Not the same length means they are not anagrams
         if len(s) != len(t):
             return False
 
