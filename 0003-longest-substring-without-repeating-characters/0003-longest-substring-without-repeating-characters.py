@@ -26,6 +26,8 @@ class Solution:
             # Expand window if there are no duplicate chars
             # Contract window if there are duplicate chars in the window
         # A hashset is needed to keep track of seen chars
+        # Time: O(n)
+        # Space: O(n)
         if len(s) == 0 or len(s) == 1:
             return len(s)
 
