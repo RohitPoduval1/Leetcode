@@ -1,34 +1,46 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
-        Brute Force: check all possible substrings with a nested for loop, keeping track
-        of the longest one.
-        Time: O(N^2)
-        Space: O(1)
+        # Brute Force: Loop through all possible substrings with set to keep track of seen chars
+        # Time: O(n^2)
+        # Space: O(n)
+        if len(s) == 0 or len(s) == 1:
+            return len(s)
 
-        Optimized: Dynamic-Sized Sliding Window
-
-        while window is valid: expand it by adding more characters at R
-        while window is invalid: contract it by removing characters at L
-        A window is valid if there are no repeating characters present
-
-        Time: O(N)
-        Space: O(N)
+        max_length = 0
+        for substr_start in range(len(s)):
+            seen = set()
+            seen.add(s[substr_start])
+            for j in range(substr_start+1, len(s)):
+                if s[j] not in seen:
+                    seen.add(s[j])
+                else:
+                    max_length = max(max_length, len(seen))
+                    break
+        
+        return max_length
         """
 
-        unique_chars = set()  # for O(1) existence of characters
-        longest = 0  # the longest substring seen
+        # Optimized: Dynamic Sliding Window
+        # What is a valid window? One without duplicate characters
+            # Expand window if there are no duplicate chars
+            # Contract window if there are duplicate chars in the window
+        # A hashset is needed to keep track of seen chars
+        if len(s) == 0 or len(s) == 1:
+            return len(s)
 
-        left = 0
-        for right in range(len(s)):
-            # while the window is invalid
-            while s[right] in unique_chars:
-                unique_chars.remove(s[left])
-                left += 1
+        max_length = 0
+        seen_chars = set()
+        L = 0
+        for R in range(len(s)):
+            # Window is invalid, remove s[L] until it is valid
+            while s[R] in seen_chars and L < len(s):
+                seen_chars.remove(s[L])
+                L += 1
+            
+            # Valid window now
+            seen_chars.add(s[R])
+            window_length = R - L + 1
+            max_length = max(max_length, window_length)
 
-            # The window is valid now
-            unique_chars.add(s[right])
-            # the longest between the longest we've seen and the current window length
-            longest = max(longest, (right - left) + 1)
-
-        return longest
+        return max_length
