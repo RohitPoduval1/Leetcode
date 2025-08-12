@@ -1,37 +1,36 @@
 class Solution(object):
     def isValid(self, s):
         """
-        Use a STACK! Why? → "Open brackets must be closed in the correct order" means a LIFO data
-        structure is useful (AKA Stack).
+        "Open brackets must be closed in the correct order."
+        This means we should use a STACK!
 
-        PUSH opening brackets on the stack
-        When to pop? When we encounter closing brackets. The opening brackets on the stack should
-        pair with the current closing bracket
-        
-        Time: O(n)
-        Space: O(n)
+        When do we push to the stack?
+            When we see an opening bracket.
+        When do we pop from the stack?
+            When we see a closing bracket.
+            The closing bracket that we are on MUST match the bracket
+            popped from the stack. If it does not, then `s` is invalid.
         """
-        stack = []
-        closing_opening = {
-            ')': '(',
-            '}': '{',
-            ']':'['
+        opening_to_closing = {
+            '(': ')',
+            '[': ']',
+            '{': '}',
         }
-        opening_brackets = ['(', '{', '[']
+        opening_brackets = []
         for bracket in s:
-            # Bracket is opening
-            if bracket in opening_brackets:
-                stack.append(bracket)  # push onto stack
+            # Opening bracket
+            # Push to stack
+            if bracket in ('(', '[', '{'):
+                opening_brackets.append(bracket)
+                continue
+            
+            # Closing bracket
+            # Pop opening bracket from stack if there are opening brackets even there
+            if len(opening_brackets) == 0:
+                return False
 
-            # Bracket is closing
-            else:
-                # if the opening bracket on the stack does not match
-                # with the corresponding opening bracket to the current closing bracket,
-                # the parentheses are not valid
-                if len(stack) == 0:
-                    return False
+            opening_bracket = opening_brackets.pop()
+            if opening_to_closing[opening_bracket] != bracket:
+                return False
 
-                corresponding_opening_bracket = closing_opening[bracket]
-                if stack.pop() != corresponding_opening_bracket:
-                    return False
-        return len(stack) == 0
+        return len(opening_brackets) == 0
