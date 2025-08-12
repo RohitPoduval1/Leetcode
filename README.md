@@ -18,6 +18,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0217-contains-duplicate](https://github.com/RohitPoduval1/Leetcode/tree/master/0217-contains-duplicate) |
 | [0238-product-of-array-except-self](https://github.com/RohitPoduval1/Leetcode/tree/master/0238-product-of-array-except-self) |
 | [0347-top-k-frequent-elements](https://github.com/RohitPoduval1/Leetcode/tree/master/0347-top-k-frequent-elements) |
+| [0739-daily-temperatures](https://github.com/RohitPoduval1/Leetcode/tree/master/0739-daily-temperatures) |
 | [2058-concatenation-of-array](https://github.com/RohitPoduval1/Leetcode/tree/master/2058-concatenation-of-array) |
 ## Hash Table
 |  |
@@ -110,6 +111,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0020-valid-parentheses](https://github.com/RohitPoduval1/Leetcode/tree/master/0020-valid-parentheses) |
 | [0150-evaluate-reverse-polish-notation](https://github.com/RohitPoduval1/Leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
+| [0739-daily-temperatures](https://github.com/RohitPoduval1/Leetcode/tree/master/0739-daily-temperatures) |
 ## Dynamic Programming
 |  |
 | ------- |
@@ -123,4 +125,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0150-evaluate-reverse-polish-notation](https://github.com/RohitPoduval1/Leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
+## Monotonic Stack
+|  |
+| ------- |
+| [0739-daily-temperatures](https://github.com/RohitPoduval1/Leetcode/tree/master/0739-daily-temperatures) |
 <!---LeetCode Topics End-->
