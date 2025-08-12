@@ -10,6 +10,9 @@ class Solution(object):
             When we see a closing bracket.
             The closing bracket that we are on MUST match the bracket
             popped from the stack. If it does not, then `s` is invalid.
+
+        Time: O(n)
+        Space: O(n)
         """
         opening_to_closing = {
             '(': ')',
