@@ -1,30 +1,37 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         """
-        BRUTE FORCE: Nested for loop to find the bigger number for each number in the array
-        Time: O(N²)
-        Space: O(1)
-    
-    
-        PUSH if the current temp is less than or equal to the top of the stack
-        POP if the current temp is greater than the top of the stack (since temps can be resolved
-        with that greater temp)
+        We need to maintain a context/timeline of temperatures
+            This is a hint that we need to use a stack.
+        The giveaway for the data structure to use is "the number of days you have
+        to wait after the ith day to get a warmer temperature"
+            This is a dead giveaway that we need a MONOTONIC STACK.
 
-        OPTIMIZED: Stack (monotonic in decreasing order)
-        Time: O(N)
-        Space: O(N) with the stack (answer array does not count in space complexity)
+        Should the stack be monotonically increasing or decreasing?
+            We want the NEXT GREATER element -> monotonically decreasing stack
+        
+        Time: O(n) - Despite while nested in the for, we are only processing n elements.
+            An element is either in the list or in the stack. Since we don't
+            process elements multiple times, it is linear time complexity.
+        Space: O(n) - In the worst case, all elements are added to the stack (Ex. 2 and 3)
         """
+        ans = [0] * len(temperatures)
+        md_stack = []  # a monotonically decreasing stack
+        for i in range(len(temperatures)-1, -1, -1):
+            curr_temp = temperatures[i]
 
-        answer = [0] * len(temperatures)
-        stack = []
-
-        for i, temp in enumerate(temperatures):
+            while len(md_stack) > 0 and curr_temp >= temperatures[md_stack[-1]]:  # recall we store indexes rather than actual temps
+                md_stack.pop()
             
-            # while the current temp is able to resolve unresolved temps in the stack
-            while stack and temp > stack[-1][0]:
-                stack_temp, stack_index = stack.pop()
-                answer[stack_index] = i - stack_index
+            ### At this point, the element is poised to be pushed to the stack ###
+            # There is nothing in the stack so just add the index (and element by definition)
+            if len(md_stack) == 0:
+                md_stack.append(i)
+                # We would set `ans[i] = 0` but we already initialized to all 0s
+                continue
             
-            stack.append( (temp, i) )
+            # There are elements in the stack but we want to push the element since its ready
+            ans[i] = md_stack[-1] - i
+            md_stack.append(i)
 
-        return answer
+        return ans
