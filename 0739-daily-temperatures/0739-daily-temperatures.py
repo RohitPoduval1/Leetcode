@@ -16,7 +16,10 @@ class Solution:
         Space: O(n) - In the worst case, all elements are added to the stack (Ex. 2 and 3)
         """
         ans = [0] * len(temperatures)
-        md_stack = []  # a monotonically decreasing stack
+        
+        # A monotonically decreasing stack
+        # Adds to the stack based on temperatures, but stores the index of the temperature
+        md_stack = []
         for i in range(len(temperatures)-1, -1, -1):
             curr_temp = temperatures[i]
 
