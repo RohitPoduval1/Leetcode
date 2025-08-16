@@ -20,6 +20,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0347-top-k-frequent-elements](https://github.com/RohitPoduval1/Leetcode/tree/master/0347-top-k-frequent-elements) |
 | [0735-asteroid-collision](https://github.com/RohitPoduval1/Leetcode/tree/master/0735-asteroid-collision) |
 | [0739-daily-temperatures](https://github.com/RohitPoduval1/Leetcode/tree/master/0739-daily-temperatures) |
+| [0792-binary-search](https://github.com/RohitPoduval1/Leetcode/tree/master/0792-binary-search) |
 | [2058-concatenation-of-array](https://github.com/RohitPoduval1/Leetcode/tree/master/2058-concatenation-of-array) |
 ## Hash Table
 |  |
@@ -96,6 +97,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0167-two-sum-ii-input-array-is-sorted](https://github.com/RohitPoduval1/Leetcode/tree/master/0167-two-sum-ii-input-array-is-sorted) |
+| [0792-binary-search](https://github.com/RohitPoduval1/Leetcode/tree/master/0792-binary-search) |
 ## Trie
 |  |
 | ------- |
