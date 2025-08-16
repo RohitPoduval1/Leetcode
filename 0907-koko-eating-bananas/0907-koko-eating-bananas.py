@@ -45,6 +45,11 @@ class Solution:
         ### NEW APPROACH ###
         Rather than iterating over the range [max(piles), 1] going down by 1,
         we can use binary search to find the optimal solution
+
+        Time: O(n log(n)) since we are iterating over the piles of length n
+            log(n) times due to binary search and checking the total time taken
+            to eat all the bananas
+        Space: O(1)
         """
         L_banana_eating_speed = 1               # inclusive
         R_banana_eating_speed = max(piles) + 1  # exclusive
