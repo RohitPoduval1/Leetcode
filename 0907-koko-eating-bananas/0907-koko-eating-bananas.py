@@ -1,46 +1,70 @@
+import math
+
+
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         """
-        • Koko can eat at most 1 pile per hour. This is why they give the constraint of
-        len(piles) ≤ h since if h < len(piles), its not possible to finish all bananas. 
-        • hours spent eating bananas at piles[i] = ceil(piles[i] / k)
+        ### PROBLEM INFO ###
+        * ith pile has `piles[i]` bananas
+        * guards will come back in `h` hours
+        * `k` is banana eating speed (banana per hour)
+        * If k > piles[i], she eats the entire pile only. Not any from the next pile
 
-        BRUTE FORCE:
-        Try all numbers from 1 to max(piles) inclusive and see which is the lowest number
-        that eats all the bananas in the proper amount of hours. 
-        • Time: O(n * m)
-            n is len(piles)
-            m is max(piles)
-        • Space: O(1)
+        Obviously if `k` is very large, she can eat quickly within the allotted time.
+        She likes taking her time and wants to eat the fewest bananas possible while
+        still finishing before h.
 
-        OPTIMIZED: Literally optimize the brute force solution
-        Instead of linearly walking through [1, max(piles)], use binary search on that array using
-        more informed decisions. Those more informed decision are...
-            • If you find a k that works, go smaller to see if you can do better
-            • If you can't, make k bigger to get a working
-        • Time: O(n * log(m))
-        • Space: O(1)
+        ### BRUTE FORCE ###
+        From Ex. 2, we see that if len(piles) == h, then k is max(piles).
+        This makes sense as Koko must each the most bananas as the biggest
+        pile if she wants to finish in time.
+
+        This means for a brute force solution, we can start at max(piles) and
+        try every k in the range of [max(piles), 1] going down by 1 each time.
+        We are guaranteed to find the optimal `k` then!
         """
-        smallest_k = float("inf")
 
-        # the range of possible k values from [1, 2, 3, ..., max(piles)]
-        left = 1            # inclusive
-        right = max(piles)  # inclusive
-        while left <= right:
-            middle = (left + right) // 2  # the k we are looking at in the range of possible k values
-            curr_hours = 0
+        """
+        Time: O(n^2)
+        Space: O(1)
 
-            # Get how many hours it takes to finish the bananas with the current k
+        smallest_banana_eating_speed = float('inf')
+        for banana_eating_speed in range(max(piles), 0, -1):
+            total_time_taken = 0
             for pile in piles:
-                curr_hours += ceil(pile / middle)
-
-            if curr_hours == h or curr_hours < h:
-                smallest_k = min(smallest_k, middle)
-                right = middle - 1  # see if you can do better if curr_hours == h
-                                    # reduce k if the bananas were finished too quick
+                total_time_taken += math.ceil(pile / banana_eating_speed)
             
-            # the bananas were eaten too slow
+            if total_time_taken <= h:
+                smallest_banana_eating_speed = min(smallest_banana_eating_speed, banana_eating_speed)
             else:
-                left = middle + 1  # so increase k
+                break
+        return smallest_banana_eating_speed
+        """
+
+        """
+        ### NEW APPROACH ###
+        Rather than iterating over the range [max(piles), 1] going down by 1,
+        we can use binary search to find the optimal solution
+        """
+        L_banana_eating_speed = 1               # inclusive
+        R_banana_eating_speed = max(piles) + 1  # exclusive
+        smallest_banana_eating_speed = float("inf")
+        while L_banana_eating_speed < R_banana_eating_speed:
+            mid_banana_eating_speed = (L_banana_eating_speed + R_banana_eating_speed) // 2
             
-        return smallest_k
+            total_time_taken = 0
+            for pile in piles:
+                total_time_taken += math.ceil(pile / mid_banana_eating_speed)
+            
+            # We are taking too long
+            # so we need to increase the banana eating speed
+            if total_time_taken > h:
+                L_banana_eating_speed = mid_banana_eating_speed + 1
+
+            # We successfully finished the bananas within the time
+            # but see if we can make the banana eating speed smaller
+            else:
+                smallest_banana_eating_speed = min(smallest_banana_eating_speed, mid_banana_eating_speed)
+                R_banana_eating_speed = mid_banana_eating_speed
+
+        return smallest_banana_eating_speed
