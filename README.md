@@ -156,4 +156,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0021-merge-two-sorted-lists](https://github.com/RohitPoduval1/Leetcode/tree/master/0021-merge-two-sorted-lists) |
 | [0206-reverse-linked-list](https://github.com/RohitPoduval1/Leetcode/tree/master/0206-reverse-linked-list) |
+## Database
+|  |
+| ------- |
+| [0181-employees-earning-more-than-their-managers](https://github.com/RohitPoduval1/Leetcode/tree/master/0181-employees-earning-more-than-their-managers) |
 <!---LeetCode Topics End-->
