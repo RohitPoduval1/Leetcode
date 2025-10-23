@@ -163,4 +163,20 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0182-duplicate-emails](https://github.com/RohitPoduval1/Leetcode/tree/master/0182-duplicate-emails) |
 | [0183-customers-who-never-order](https://github.com/RohitPoduval1/Leetcode/tree/master/0183-customers-who-never-order) |
 | [1724-customer-who-visited-but-did-not-make-any-transactions](https://github.com/RohitPoduval1/Leetcode/tree/master/1724-customer-who-visited-but-did-not-make-any-transactions) |
+## Tree
+|  |
+| ------- |
+| [0226-invert-binary-tree](https://github.com/RohitPoduval1/Leetcode/tree/master/0226-invert-binary-tree) |
+## Depth-First Search
+|  |
+| ------- |
+| [0226-invert-binary-tree](https://github.com/RohitPoduval1/Leetcode/tree/master/0226-invert-binary-tree) |
+## Breadth-First Search
+|  |
+| ------- |
+| [0226-invert-binary-tree](https://github.com/RohitPoduval1/Leetcode/tree/master/0226-invert-binary-tree) |
+## Binary Tree
+|  |
+| ------- |
+| [0226-invert-binary-tree](https://github.com/RohitPoduval1/Leetcode/tree/master/0226-invert-binary-tree) |
 <!---LeetCode Topics End-->
